@@ -1,6 +1,7 @@
 multizip
 ================================
-A simple program to compress a pattern of files individually within a working directory.
+
+compress a pattern of files individually within a working directory
 --------------------------------
 
 <pre>
