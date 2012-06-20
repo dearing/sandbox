@@ -46,11 +46,18 @@ namespace hash
             {
                 switch (item)
                 {
+                    default:
+                        Console.WriteLine("unrecognized argument `{0}`",item);
+                        Help();
+                        return;
                     case 'h':
                         Help();
                         return;
                     case 's':
                         Engine.StringsMode = true;
+                        break;
+                    case 'f':
+                        Engine.StringsMode = false;
                         break;
                     case 'r':
                         Engine.Recursive = true;
@@ -109,18 +116,19 @@ namespace hash
                 Assembly.GetExecutingAssembly().GetName().Version
                 );
 
-            Console.WriteLine("syntax: {0} [dhrsu] [contextual parameters]\n", me);
+            Console.WriteLine("syntax: {0} [dfhrsu] [contextual parameters]\n", me);
             Console.WriteLine("  h:    show this help");
             Console.WriteLine("  r:    recursivly iterate through folders");
             Console.WriteLine("  u:    return the hash as uppercase");
             Console.WriteLine("  d:    set the digest method: MD5, *SHA1, SHA256, SHA384, SHA512");
-            Console.WriteLine("  s:    parameters are whole strings to be hashed\n");
+            Console.WriteLine("  s:    parameters are whole strings to be hashed");
+            Console.WriteLine("  f:    parameters are filenames and/or globs\n");
 
-            Console.WriteLine("{0} defaults to accepting a list of files to be hashed with SHA1",me);
+            Console.WriteLine("{0} defaults to using SHA1",me);
             Console.WriteLine("example usage:");
             Console.WriteLine("\t{0} s \"dig dug\" dig dug",me);
             Console.WriteLine("\t{0} sd md5 \"dig dug\" dig dug", me);
-            Console.WriteLine("\t{0} file.dll file.exe *.txt",me);
+            Console.WriteLine("\t{0} f file.dll file.exe *.txt",me);
             Console.WriteLine("\t{0} dr sha256 *",me);
                        
         }
