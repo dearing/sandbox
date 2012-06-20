@@ -8,7 +8,7 @@ digest some strings or files
 
 <pre>
 HASH v0.5.*.*  digest a set of strings or files
-syntax: HASH [dhrsu] [contextual parameters]
+syntax: HASH [dfhrsu] [contextual parameters]
 
   h:    show this help
   r:    recursivly iterate through folders
@@ -24,6 +24,10 @@ example usage:
         HASH f file.dll file.exe *.txt
         HASH dr sha256 *
 </pre>
+
+BUILD
+--------------------------------
+`csc hash.cs`
 
 TODO
 --------------------------------
