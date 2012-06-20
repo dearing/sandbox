@@ -27,7 +27,8 @@ example usage:
 
 BUILD
 --------------------------------
-`csc hash.cs`
+vs?   `csc hash.cs`
+mono? `mcs hash.cs`
 
 TODO
 --------------------------------
