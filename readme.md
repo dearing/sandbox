@@ -1,4 +1,4 @@
-my sandbox
+things worth keeping
 ================================
 
-Things worth keeping publicly will find its way here in time.
+If it doesn't warrant its own project but still may be useful to somebody then I'll probably dump it here that way it'll serve as a kind of software technology stamp collection.
