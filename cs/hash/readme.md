@@ -32,5 +32,4 @@ mono? `mcs hash.cs`
 
 TODO
 --------------------------------
-* strip leading dot directory in checksum files
-* handle errors of files and directories
+* glob edge cases
