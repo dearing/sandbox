@@ -7,7 +7,6 @@ using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Text;
 
-
 [assembly: AssemblyTitle("hash")]
 [assembly: AssemblyDescription("message digest command line tool")]
 [assembly: AssemblyConfiguration("")]
@@ -57,7 +56,7 @@ namespace hash
                         Engine.Recursive = true;
                         break;
                     case 'u':
-                        Engine.UppperCase = true;
+                        Engine.UpperCase = true;
                         break;
                     case 'd':
                         if (p.Count > 0)
@@ -67,12 +66,11 @@ namespace hash
                                 Engine.Mode = (DigestMode)Enum.Parse(typeof(DigestMode), p[0], true);
                                 p.RemoveAt(0);
                             }
-                            catch (ArgumentException e)
+                            catch (ArgumentException)
                             {
                                 Console.WriteLine("`{0}` is not a recognized digest method",p[0]);
                                 return;
                             }
-                            
                         }
                         else
                         {
@@ -141,17 +139,20 @@ namespace hash
     {
         public static Boolean Recursive     = false;
         public static Boolean StringsMode   = false;
-        public static Boolean UppperCase    = false;
+        public static Boolean UpperCase    = false;
         public static DigestMode Mode       = DigestMode.SHA1;
 
         public static String Byte2hex(byte[] data)
         {
             StringBuilder sb = new StringBuilder();
-            foreach (byte b in data)
-                if (UppperCase)
+
+            if(UpperCase)
+                foreach (byte b in data)
                     sb.Append(b.ToString("X2"));
-                else
+            else
+                foreach (byte b in data)
                     sb.Append(b.ToString("x2"));
+
             return sb.ToString();
         }
 
@@ -165,10 +166,10 @@ namespace hash
                 switch (mode)
                 {
                     case DigestMode.MD5:
-                        data = MD5.Create().ComputeHash(fi.OpenRead());
+                        data =    MD5.Create().ComputeHash(fi.OpenRead());
                         break;
                     case DigestMode.SHA1:
-                        data = SHA1.Create().ComputeHash(fi.OpenRead());
+                        data =   SHA1.Create().ComputeHash(fi.OpenRead());
                         break;
                     case DigestMode.SHA256:
                         data = SHA256.Create().ComputeHash(fi.OpenRead());
@@ -190,12 +191,11 @@ namespace hash
             byte[] data = new byte[0];
             switch (mode)
             {
-
                 case DigestMode.MD5:
-                    data = MD5.Create().ComputeHash(Encoding.ASCII.GetBytes(g));
+                    data =    MD5.Create().ComputeHash(Encoding.ASCII.GetBytes(g));
                     break;
                 case DigestMode.SHA1:
-                    data = SHA1.Create().ComputeHash(Encoding.ASCII.GetBytes(g));
+                    data =   SHA1.Create().ComputeHash(Encoding.ASCII.GetBytes(g));
                     break;
                 case DigestMode.SHA256:
                     data = SHA256.Create().ComputeHash(Encoding.ASCII.GetBytes(g));
