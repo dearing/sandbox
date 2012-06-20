@@ -102,9 +102,19 @@ namespace hash
                 foreach (var item in p)
                     Console.WriteLine("{0}={1}", Engine.DigestString(item, Engine.Mode), item);
             else
+            {
                 foreach (var item in p)
-                    Console.WriteLine("{0}={1}", Engine.DigestFile(item, Engine.Mode), item);
+                    Console.WriteLine("{0}={1}", Engine.DigestFile(item, Engine.Mode), RemoveDotSlash(item));
+            }
 
+        }
+
+        public static String RemoveDotSlash(String g)
+        {
+            if (g.StartsWith(@"./") || g.StartsWith(@".\"))
+                return g.Remove(0, 2);
+            else
+                return g;
         }
 
         public static void Help()
