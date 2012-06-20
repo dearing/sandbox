@@ -11,7 +11,7 @@ using System.Text;
 [assembly: AssemblyTitle("hash")]
 [assembly: AssemblyDescription("message digest command line tool")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Microsoft")]
+[assembly: AssemblyCompany("Jacob Dearing")]
 [assembly: AssemblyProduct("hash")]
 [assembly: AssemblyCopyright("Copyright © Jacob Dearing 2012")]
 [assembly: AssemblyTrademark("")]
