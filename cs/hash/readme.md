@@ -1,30 +1,30 @@
 H * A * S * H
 ================================
-hash, or: How I learned to love the digest.
+
+HASH, or: How I learned to love the digest.
 --------------------------------
 
-command line cowboy tool to compute and validate checksums in various ways
+digest some strings or files
 
 <pre>
-H * A * S * H
-Hash some files; verify some checksums; convert some strings etc..
+HASH v0.5.*.*  digest a set of strings or files
+syntax: HASH [dhrsu] [contextual parameters]
 
- -f /f  --files         file1 file2 * *.mp3 // the default behavior
- -c /c  --checksum      checksum_file1 checksum_file2 checksum_file3
- -s /s  --strings       "some password" another_password
- -d /d  --direct        open the STDIN for hashing - ignores other switches
+  h:    show this help
+  r:    recursivly iterate through folders
+  u:    return the hash as uppercase
+  d:    set the digest method: MD5, *SHA1, SHA256, SHA384, SHA512
+  s:    parameters are whole strings to be hashed
 
- -hf /hf        --hashfunction:{MD5,SHA1,SHA256,SHA384,SHA512}
-
- -v /v  --verbose       extra talk - don't use if you are making digest files
- -r /r  --recursive     search down into directories with provided patterns
- -u /u  --uppercasehex  uppercase the result strings
+HASH defaults to accepting a list of files to be hashed with SHA1
+example usage:
+        HASH s "dig dug" dig dug
+        HASH sd md5 "dig dug" dig dug
+        HASH file.dll file.exe *.txt
+        HASH dr sha256 *
 </pre>
 
 TODO
 --------------------------------
-* reorganize
-* utilize linq
-* streams
 * strip leading dot directory in checksum files
-* conform to standard checksum formats?
+* handle errors of files and directories
